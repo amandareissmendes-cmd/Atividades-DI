@@ -1,1 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luna Prata & Joias - Joias delicadas para eternizar momentos.">
+    <title>Luna Prata & Joias</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 
+    <!-- Tailwind CSS (Play CDN for Development/Demo) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'luna-pink-light': '#F8DDE6',
+                        'luna-pink': '#D98CA8',
+                        'luna-pink-dark': '#B85C7A',
+                        'luna-silver': '#C0C0C0',
+                        'luna-silver-light': '#E8E8E8',
+                        'luna-white': '#FFFFFF',
+                        'luna-gray': '#555555',
+                        'luna-black': '#242124'
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="font-montserrat text-luna-gray bg-luna-white overflow-x-hidden">
+
+    <!-- Header & Nav -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-luna-black focus:outline-none focus-visible:ring-2 focus-visible:ring-luna-pink rounded" aria-label="Abrir menu">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <!-- Logo -->
+            <a href="#" class="flex flex-col items-center justify-center text-center outline-none focus-visible:ring-2 focus-visible:ring-luna-pink rounded">
+                <h1 class="font-playfair text-2xl font-bold text-luna-black tracking-wider uppercase">Luna</h1>
+                <span class="text-[0.65rem] tracking-[0.2em] text-luna-pink-dark uppercase">Prata & Joias</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
+                <a href="#inicio" class="hover:text-luna-pink-dark transition-colors">Início</a>
+                <a href="#categorias" class="hover:text-luna-pink-dark transition-colors">Coleções</a>
+                <a href="#produtos" class="hover:text-luna-pink-dark transition-colors">Ofertas</a>
+                <a href="#sobre" class="hover:text-luna-pink-dark transition-colors">Sobre nós</a>
+                <a href="#contato" class="hover:text-luna-pink-dark transition-colors">Contato</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <button class="text-luna-black hover:text-luna-pink-dark transition-colors" aria-label="Pesquisar" onclick="document.getElementById('search-input').focus()">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                </button>
+                <button class="hidden md:block text-luna-black hover:text-luna-pink-dark transition-colors" aria-label="Minha Conta">
+                    <i data-lucide="user" class="w-5 h-5"></i>
+                </button>
+                <button onclick="toggleFavorites()" class="relative text-luna-black hover:text-luna-pink-dark transition-colors" aria-label="Favoritos">
+                    <i data-lucide="heart" class="w-5 h-5"></i>
+                    <span id="fav-count" class="absolute -top-1.5 -right-2 bg-luna-pink-light text-luna-pink-dark text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+                <button onclick="toggleCart()" class="relative text-luna-black hover:text-luna-pink-dark transition-colors" aria-label="Sacola de Compras">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span id="cart-count" class="absolute -top-1.5 -right-2 bg-luna-pink-dark text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-luna-silver-light">
+            <nav class="flex flex-col p-4 gap-4 text-sm font-medium">
+                <a href="#inicio" class="mobile-link hover:text-luna-pink-dark">Início</a>
+                <a href="#categorias" class="mobile-link hover:text-luna-pink-dark">Coleções</a>
+                <a href="#produtos" class="mobile-link hover:text-luna-pink-dark">Ofertas</a>
+                <a href="#sobre" class="mobile-link hover:text-luna-pink-dark">Sobre nós</a>
+                <a href="#contato" class="mobile-link hover:text-luna-pink-dark">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="relative bg-luna-pink-light/30">
+            <div class="container mx-auto px-4 md:px-8 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
+                <div class="order-2 lg:order-1 text-center lg:text-left animate-fade-in-up">
+                    <h2 class="font-playfair text-4xl lg:text-6xl font-bold text-luna-black leading-tight mb-4">
+                        O brilho que revela a sua essência
+                    </h2>
+                    <p class="text-base lg:text-lg mb-8 max-w-lg mx-auto lg:mx-0">
+                        Joias delicadas para eternizar momentos e destacar a sua beleza em cada detalhe.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#produtos" class="w-full sm:w-auto bg-luna-pink-dark text-white px-8 py-3 rounded-full hover:bg-luna-black transition-colors font-medium">Conheça a coleção</a>
+                        <a href="#destaques" class="w-full sm:w-auto border border-luna-silver bg-white text-luna-black px-8 py-3 rounded-full hover:border-luna-pink-dark hover:text-luna-pink-dark transition-colors font-medium">Ver mais vendidos</a>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1599643478524-fb66f72200bd?auto=format&fit=crop&w=800&q=80" alt="Colar de prata delicado sobre fundo claro" class="rounded-t-full w-full max-w-md object-cover shadow-lg aspect-[4/5]">
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section class="border-y border-luna-silver-light bg-white">
+            <div class="container mx-auto px-4 md:px-8 py-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="flex flex-col items-center gap-2">
+                        <i data-lucide="truck" class="w-6 h-6 text-luna-pink-dark"></i>
+                        <h3 class="font-semibold text-luna-black text-sm">Envio para todo o Brasil</h3>
+                        <p class="text-xs text-luna-gray">Frete grátis acima de R$ 299</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <i data-lucide="gift" class="w-6 h-6 text-luna-pink-dark"></i>
+                        <h3 class="font-semibold text-luna-black text-sm">Embalagem especial</h3>
+                        <p class="text-xs text-luna-gray">Pronta para presentear</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-luna-pink-dark"></i>
+                        <h3 class="font-semibold text-luna-black text-sm">Compra segura</h3>
+                        <p class="text-xs text-luna-gray">Seus dados protegidos</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <i data-lucide="message-circle-heart" class="w-6 h-6 text-luna-pink-dark"></i>
+                        <h3 class="font-semibold text-luna-black text-sm">Atendimento</h3>
+                        <p class="text-xs text-luna-gray">Suporte personalizado</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section id="categorias" class="container mx-auto px-4 md:px-8 py-16">
+            <div class="text-center mb-12">
+                <h2 class="font-playfair text-3xl md:text-4xl text-luna-black font-bold mb-4">Encontre sua joia perfeita</h2>
+                <div class="w-16 h-0.5 bg-luna-pink mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <!-- Categoria 1 -->
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="filterByCategory('Anéis')">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f66126e28?auto=format&fit=crop&w=400&q=80" alt="Categoria Anéis" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+                        <h3 class="text-white font-playfair text-xl font-bold mb-1">Anéis</h3>
+                        <span class="text-luna-pink-light text-xs font-medium uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">Explorar <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+                <!-- Categoria 2 -->
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="filterByCategory('Colares')">
+                    <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=400&q=80" alt="Categoria Colares" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+                        <h3 class="text-white font-playfair text-xl font-bold mb-1">Colares</h3>
+                        <span class="text-luna-pink-light text-xs font-medium uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">Explorar <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+                <!-- Categoria 3 -->
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="filterByCategory('Brincos')">
+                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=400&q=80" alt="Categoria Brincos" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+                        <h3 class="text-white font-playfair text-xl font-bold mb-1">Brincos</h3>
+                        <span class="text-luna-pink-light text-xs font-medium uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">Explorar <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+                <!-- Categoria 4 -->
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="filterByCategory('Pulseiras')">
+                    <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=400&q=80" alt="Categoria Pulseiras" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+                        <h3 class="text-white font-playfair text-xl font-bold mb-1">Pulseiras</h3>
+                        <span class="text-luna-pink-light text-xs font-medium uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">Explorar <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search and Filters -->
+        <section id="produtos" class="bg-luna-pink-light/10 py-8 border-t border-luna-silver-light">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="flex flex-col md:flex-row gap-4 items-center justify-between bg-white p-4 rounded-xl shadow-sm border border-luna-silver-light">
+                    <!-- Busca -->
+                    <div class="relative w-full md:w-1/3">
+                        <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-luna-gray"></i>
+                        <input type="text" id="search-input" placeholder="Buscar joias..." class="w-full pl-10 pr-4 py-2 border border-luna-silver rounded-lg focus:outline-none focus:border-luna-pink-dark focus:ring-1 focus:ring-luna-pink-dark text-sm">
+                    </div>
+                    <!-- Filtros e Ordenação -->
+                    <div class="flex flex-wrap w-full md:w-auto gap-2">
+                        <select id="filter-category" class="bg-transparent border border-luna-silver text-sm rounded-lg py-2 px-3 focus:outline-none focus:border-luna-pink-dark">
+                            <option value="all">Todas as categorias</option>
+                            <option value="Anéis">Anéis</option>
+                            <option value="Colares">Colares</option>
+                            <option value="Brincos">Brincos</option>
+                            <option value="Pulseiras">Pulseiras</option>
+                        </select>
+                        <select id="sort-items" class="bg-transparent border border-luna-silver text-sm rounded-lg py-2 px-3 focus:outline-none focus:border-luna-pink-dark">
+                            <option value="default">Relevância</option>
+                            <option value="price-asc">Menor Preço</option>
+                            <option value="price-desc">Maior Preço</option>
+                            <option value="alpha">A-Z</option>
+                        </select>
+                        <button id="clear-filters" class="text-xs text-luna-pink-dark underline hover:text-luna-black ml-2" onclick="clearFilters()">Limpar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section id="destaques" class="container mx-auto px-4 md:px-8 py-16">
+            <div class="text-center mb-12">
+                <h2 class="font-playfair text-3xl md:text-4xl text-luna-black font-bold mb-4">Os queridinhos da Luna</h2>
+                <div class="w-16 h-0.5 bg-luna-pink mx-auto"></div>
+            </div>
+            
+            <!-- Products Grid Container -->
+            <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                <!-- Rendered via JS -->
+            </div>
+            
+            <div id="no-products-msg" class="hidden text-center text-luna-gray py-10">
+                <i data-lucide="search-x" class="w-12 h-12 mx-auto text-luna-silver mb-4"></i>
+                <p>Nenhuma joia encontrada com esses filtros. Tente novamente.</p>
+            </div>
+        </section>
+
+        <!-- Promotional Banner -->
+        <section class="bg-luna-pink-light">
+            <div class="container mx-auto px-4 py-0 flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-1/2 py-16 md:py-24 px-4 md:px-16 text-center md:text-left">
+                    <h2 class="font-playfair text-3xl md:text-5xl text-luna-black font-bold mb-4">Um presente que conta histórias</h2>
+                    <p class="text-luna-gray mb-8">Surpreenda alguém especial com uma joia feita para durar na memória.</p>
+                    <a href="#produtos" class="inline-block bg-white border border-luna-pink-dark text-luna-pink-dark px-8 py-3 rounded-full hover:bg-luna-pink-dark hover:text-white transition-colors font-medium">Descobrir presentes</a>
+                </div>
+                <div class="w-full md:w-1/2 h-64 md:h-[500px]">
+                    <img src="https://images.unsplash.com/photo-1549439602-43ebca2327af?auto=format&fit=crop&w=800&q=80" alt="Caixa de presente com joia" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us -->
+        <section id="sobre" class="container mx-auto px-4 md:px-8 py-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1573408301145-b98c41470ceb?auto=format&fit=crop&w=600&q=80" alt="Mulher usando joias Luna" class="rounded-t-full shadow-lg">
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-luna-pink-light rounded-full -z-10"></div>
+                </div>
+                <div>
+                    <h2 class="font-playfair text-3xl md:text-4xl text-luna-black font-bold mb-6">Mais do que joias, histórias para guardar</h2>
+                    <p class="mb-4 text-sm leading-relaxed">
+                        A Luna Prata & Joias nasceu do desejo de criar peças que acompanhem você em todos os momentos. Acreditamos que a verdadeira sofisticação mora na delicadeza e nos detalhes.
+                    </p>
+                    <p class="mb-8 text-sm leading-relaxed">
+                        Trabalhamos com materiais selecionados para garantir que cada joia seja um símbolo de durabilidade e elegância.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-luna-black font-medium"><i data-lucide="check" class="text-luna-pink-dark w-5 h-5"></i> Elegância nos detalhes</li>
+                        <li class="flex items-center gap-3 text-sm text-luna-black font-medium"><i data-lucide="check" class="text-luna-pink-dark w-5 h-5"></i> Qualidade e cuidado</li>
+                        <li class="flex items-center gap-3 text-sm text-luna-black font-medium"><i data-lucide="check" class="text-luna-pink-dark w-5 h-5"></i> Atendimento humanizado</li>
+                        <li class="flex items-center gap-3 text-sm text-luna-black font-medium"><i data-lucide="check" class="text-luna-pink-dark w-5 h-5"></i> Presentes com significado</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="bg-luna-pink-light/30 py-16">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-playfair text-3xl md:text-4xl text-luna-black font-bold mb-4">Quem escolhe a Luna</h2>
+                    <div class="w-16 h-0.5 bg-luna-pink mx-auto"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-luna-silver-light">
+                        <div class="flex text-luna-pink-dark mb-4">
+                            <i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        </div>
+                        <p class="text-sm italic mb-4">"Amei a delicadeza do meu anel solitário. A embalagem veio perfumada e deu pra sentir o carinho em cada detalhe."</p>
+                        <p class="font-bold text-xs text-luna-black uppercase">— Mariana C.</p>
+                        <span class="text-[10px] text-luna-silver block mt-1">*Depoimento demonstrativo</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-luna-silver-light">
+                        <div class="flex text-luna-pink-dark mb-4">
+                            <i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        </div>
+                        <p class="text-sm italic mb-4">"Comprei um colar para presentear minha mãe e ela chorou de emoção. Qualidade impecável."</p>
+                        <p class="font-bold text-xs text-luna-black uppercase">— Juliana S.</p>
+                        <span class="text-[10px] text-luna-silver block mt-1">*Depoimento demonstrativo</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-luna-silver-light">
+                        <div class="flex text-luna-pink-dark mb-4">
+                            <i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="w-4 h-4"></i>
+                        </div>
+                        <p class="text-sm italic mb-4">"Entrega super rápida e atendimento excelente pelo WhatsApp. Com certeza comprarei de novo."</p>
+                        <p class="font-bold text-xs text-luna-black uppercase">— Camila T.</p>
+                        <span class="text-[10px] text-luna-silver block mt-1">*Depoimento demonstrativo</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter & FAQ Container -->
+        <section class="container mx-auto px-4 md:px-8 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 border-b border-luna-silver-light">
+            <!-- FAQ -->
+            <div>
+                <h2 class="font-playfair text-2xl text-luna-black font-bold mb-6">Dúvidas Frequentes</h2>
+                <div class="space-y-4">
+                    <div class="faq-item border border-luna-silver-light rounded-lg overflow-hidden">
+                        <button class="faq-btn w-full px-4 py-3 flex justify-between items-center text-left text-sm font-medium focus:outline-none focus:bg-luna-pink-light/20" aria-expanded="false">
+                            Como escolher o tamanho do meu anel?
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-3 text-sm text-luna-gray">
+                            Disponibilizamos um guia de medidas em cada página de anel. Você pode medir a circunferência do seu dedo com um barbante ou fita métrica e comparar na nossa tabela.
+                        </div>
+                    </div>
+                    <div class="faq-item border border-luna-silver-light rounded-lg overflow-hidden">
+                        <button class="faq-btn w-full px-4 py-3 flex justify-between items-center text-left text-sm font-medium focus:outline-none focus:bg-luna-pink-light/20" aria-expanded="false">
+                            Quais materiais são utilizados nas joias?
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-3 text-sm text-luna-gray">
+                            Trabalhamos predominantemente com Prata 925 e banhos de Ouro 18k, garantindo brilho, durabilidade e qualidade hipoalergênica.
+                        </div>
+                    </div>
+                    <div class="faq-item border border-luna-silver-light rounded-lg overflow-hidden">
+                        <button class="faq-btn w-full px-4 py-3 flex justify-between items-center text-left text-sm font-medium focus:outline-none focus:bg-luna-pink-light/20" aria-expanded="false">
+                            Como cuidar das minhas peças?
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-3 text-sm text-luna-gray">
+                            Evite contato com produtos químicos, perfumes e água do mar. Guarde-as no saquinho original ou em porta-joias de veludo para evitar atrito.
+                        </div>
+                    </div>
+                    <div class="faq-item border border-luna-silver-light rounded-lg overflow-hidden">
+                        <button class="faq-btn w-full px-4 py-3 flex justify-between items-center text-left text-sm font-medium focus:outline-none focus:bg-luna-pink-light/20" aria-expanded="false">
+                            Como funciona a política de troca?
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-3 text-sm text-luna-gray">
+                            Você tem até 7 dias corridos após o recebimento para solicitar a troca ou devolução sem custo adicional.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="bg-luna-pink-light/20 p-8 rounded-2xl flex flex-col justify-center border border-luna-pink-light">
+                <h2 class="font-playfair text-2xl text-luna-black font-bold mb-2">Receba um pouco de brilho</h2>
+                <p class="text-sm mb-6">Inscreva-se para receber lançamentos e ofertas exclusivas na sua caixa de entrada.</p>
+                <form id="newsletter-form" class="space-y-4">
+                    <div>
+                        <label for="news-name" class="sr-only">Nome (Opcional)</label>
+                        <input type="text" id="news-name" placeholder="Seu nome (Opcional)" class="w-full px-4 py-2 text-sm border border-luna-silver rounded-lg focus:outline-none focus:border-luna-pink-dark">
+                    </div>
+                    <div>
+                        <label for="news-email" class="sr-only">E-mail</label>
+                        <input type="email" id="news-email" required placeholder="Seu melhor e-mail" class="w-full px-4 py-2 text-sm border border-luna-silver rounded-lg focus:outline-none focus:border-luna-pink-dark">
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <input type="checkbox" id="news-consent" required class="mt-1 w-4 h-4 text-luna-pink-dark border-luna-silver rounded focus:ring-luna-pink-dark">
+                        <label for="news-consent" class="text-xs text-luna-gray leading-tight">Concordo em receber comunicações e aceito a política de privacidade.</label>
+                    </div>
+                    <button type="submit" class="w-full bg-luna-black text-white py-3 rounded-lg hover:bg-luna-pink-dark transition-colors font-medium text-sm">Quero receber novidades</button>
+                    <p id="news-msg" class="text-xs font-medium text-center hidden"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contato" class="container mx-auto px-4 md:px-8 py-16">
+            <div class="text-center mb-12">
+                <h2 class="font-playfair text-3xl text-luna-black font-bold mb-4">Vamos conversar?</h2>
+                <div class="w-16 h-0.5 bg-luna-pink mx-auto"></div>
+            </div>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="font-playfair font-bold text-xl mb-4 text-luna-black">Informações</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-center gap-3"><i data-lucide="mail" class="text-luna-pink-dark"></i> contato@lunaprata.exemplo.com</li>
+                        <li class="flex items-center gap-3"><i data-lucide="message-circle" class="text-luna-pink-dark"></i> (11) 99999-0000 (WhatsApp)</li>
+                        <li class="flex items-center gap-3"><i data-lucide="clock" class="text-luna-pink-dark"></i> Seg - Sex: 09h às 18h</li>
+                        <li class="flex items-center gap-3"><i data-lucide="instagram" class="text-luna-pink-dark"></i> @lunaprata.demo</li>
+                    </ul>
+                </div>
+                <form id="contact-form" class="space-y-4">
+                    <div>
+                        <label for="contact-name" class="block text-xs font-bold text-luna-black mb-1">Nome</label>
+                        <input type="text" id="contact-name" required class="w-full px-4 py-2 border border-luna-silver rounded-lg focus:outline-none focus:border-luna-pink-dark text-sm">
+                    </div>
+                    <div>
+                        <label for="contact-email" class="block text-xs font-bold text-luna-black mb-1">E-mail</label>
+                        <input type="email" id="contact-email" required class="w-full px-4 py-2 border border-luna-silver rounded-lg focus:outline-none focus:border-luna-pink-dark text-sm">
+                    </div>
+                    <div>
+                        <label for="contact-subject" class="block text-xs font-bold text-luna-black mb-1">Assunto</label>
+                        <input type="text" id="contact-subject" required class="w-full px-4 py-2 border border-luna-silver rounded-lg focus:outline-none focus:border-luna-pink-dark text-sm">
+                    </div>
+                    <div>
+                        <label for="contact-msg" class="block text-xs font-bold text-luna-black mb-1">Mensagem</label>
+                        <textarea id="contact-msg" rows="4" required class="w-full px-4 py-2 border border-luna-silver rounded-lg focus:outline-none focus:border-luna-pink-dark text-sm"></textarea>
+                    </div>
+                    <button type="submit" class="bg-luna-pink-dark text-white px-8 py-3 rounded-lg hover:bg-luna-black transition-colors font-medium text-sm w-full md:w-auto">Enviar mensagem</button>
+                    <p id="contact-form-msg" class="text-xs mt-2 hidden"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-luna-black text-white pt-16 pb-6">
+        <div class="container mx-auto px-4 md:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- Coluna 1 -->
+            <div>
+                <h2 class="font-playfair text-2xl font-bold tracking-wider uppercase mb-1">Luna</h2>
+                <span class="text-[0.65rem] tracking-[0.2em] text-luna-pink uppercase block mb-4">Prata & Joias</span>
+                <p class="text-xs text-luna-silver-light leading-relaxed">
+                    Especialistas em eternizar momentos através de joias delicadas com design contemporâneo.
+                </p>
+            </div>
+            <!-- Coluna 2 -->
+            <div>
+                <h3 class="font-bold mb-4">Navegação</h3>
+                <ul class="space-y-2 text-xs text-luna-silver-light">
+                    <li><a href="#inicio" class="hover:text-luna-pink transition-colors">Início</a></li>
+                    <li><a href="#categorias" class="hover:text-luna-pink transition-colors">Coleções</a></li>
+                    <li><a href="#produtos" class="hover:text-luna-pink transition-colors">Ofertas</a></li>
+                    <li><a href="#sobre" class="hover:text-luna-pink transition-colors">Sobre nós</a></li>
+                </ul>
+            </div>
+            <!-- Coluna 3 -->
+            <div>
+                <h3 class="font-bold mb-4">Atendimento</h3>
+                <ul class="space-y-2 text-xs text-luna-silver-light">
+                    <li><a href="#contato" class="hover:text-luna-pink transition-colors">Contato</a></li>
+                    <li><a href="#" class="hover:text-luna-pink transition-colors">Perguntas frequentes</a></li>
+                    <li><a href="#" class="hover:text-luna-pink transition-colors">Entrega</a></li>
+                    <li><a href="#" class="hover:text-luna-pink transition-colors">Trocas e devoluções</a></li>
+                </ul>
+            </div>
+            <!-- Coluna 4 -->
+            <div>
+                <h3 class="font-bold mb-4">Redes Sociais</h3>
+                <div class="flex gap-4">
+                    <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-luna-pink transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-luna-pink transition-colors" aria-label="WhatsApp"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 md:px-8 border-t border-white/20 pt-6 flex flex-col md:flex-row justify-between items-center text-[10px] text-luna-silver">
+            <p>&copy; <span id="current-year"></span> Luna Prata & Joias. Todos os direitos reservados.</p>
+            <div class="flex gap-4 mt-2 md:mt-0">
+                <a href="#" class="hover:text-white">Política de Privacidade</a>
+                <a href="#" class="hover:text-white">Termos de Uso</a>
+            </div>
+            <p class="mt-2 md:mt-0 italic">Projeto demonstrativo (Frontend)</p>
+        </div>
+    </footer>
+
+    <!-- Overlay Global para Sidebar -->
+    <div id="global-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden opacity-0 transition-opacity duration-300" aria-hidden="true" onclick="closeAllSidebars()"></div>
+
+    <!-- Carrinho Lateral -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-[70] transform translate-x-full transition-transform duration-300 flex flex-col shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+        <div class="flex items-center justify-between p-4 border-b border-luna-silver-light">
+            <h2 id="cart-title" class="font-playfair font-bold text-xl flex items-center gap-2"><i data-lucide="shopping-bag"></i> Minha Sacola</h2>
+            <button onclick="toggleCart()" class="text-luna-gray hover:text-luna-black focus:outline-none" aria-label="Fechar sacola"><i data-lucide="x"></i></button>
+        </div>
+        
+        <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-4">
+            <!-- Items gerados pelo JS -->
+        </div>
+
+        <div class="p-4 border-t border-luna-silver-light bg-gray-50">
+            <div class="flex justify-between text-sm mb-2">
+                <span>Subtotal</span>
+                <span id="cart-subtotal" class="font-medium">R$ 0,00</span>
+            </div>
+            <div class="flex justify-between text-sm mb-4 text-luna-pink-dark">
+                <span>Desconto</span>
+                <span id="cart-discount">R$ 0,00</span>
+            </div>
+            <div class="flex justify-between text-lg font-bold mb-6">
+                <span>Total</span>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            <button onclick="openCheckout()" class="w-full bg-luna-black text-white py-3 rounded-lg hover:bg-luna-pink-dark transition-colors font-medium mb-2">Finalizar Pedido</button>
+            <button onclick="toggleCart()" class="w-full bg-transparent border border-luna-silver text-luna-black py-3 rounded-lg hover:bg-luna-silver-light transition-colors text-sm font-medium">Continuar Comprando</button>
+        </div>
+    </div>
+
+    <!-- Favoritos Lateral -->
+    <div id="fav-sidebar" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-[70] transform translate-x-full transition-transform duration-300 flex flex-col shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="fav-title">
+        <div class="flex items-center justify-between p-4 border-b border-luna-silver-light">
+            <h2 id="fav-title" class="font-playfair font-bold text-xl flex items-center gap-2 text-luna-pink-dark"><i data-lucide="heart" class="fill-current"></i> Meus Favoritos</h2>
+            <button onclick="toggleFavorites()" class="text-luna-gray hover:text-luna-black focus:outline-none" aria-label="Fechar favoritos"><i data-lucide="x"></i></button>
+        </div>
+        <div id="fav-items" class="flex-1 overflow-y-auto p-4 space-y-4">
+            <!-- Items gerados pelo JS -->
+        </div>
+    </div>
+
+    <!-- Modal Detalhes do Produto -->
+    <div id="product-modal" class="fixed inset-0 bg-black/60 z-[80] hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto flex flex-col md:flex-row relative scale-95 transition-transform duration-300" id="product-modal-content">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 bg-white/80 rounded-full p-1 z-10 hover:bg-luna-pink-light" aria-label="Fechar">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="w-full md:w-1/2 h-64 md:h-auto bg-gray-100">
+                <img id="modal-img" src="" alt="Produto" class="w-full h-full object-cover">
+            </div>
+            <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+                <span id="modal-category" class="text-xs uppercase tracking-wider text-luna-pink-dark mb-2 block">Categoria</span>
+                <h2 id="modal-name" class="font-playfair text-2xl md:text-3xl font-bold text-luna-black mb-2">Nome</h2>
+                <div class="flex items-end gap-3 mb-4">
+                    <span id="modal-price" class="text-xl font-bold text-luna-black">R$ 0,00</span>
+                    <span id="modal-old-price" class="text-sm line-through text-luna-silver mb-1 hidden">R$ 0,00</span>
+                </div>
+                <p id="modal-desc" class="text-sm text-luna-gray mb-6 leading-relaxed">Descrição</p>
+                <div class="mb-6">
+                    <p class="text-xs font-bold text-luna-black mb-1">Material:</p>
+                    <p id="modal-material" class="text-sm text-luna-gray">Prata</p>
+                </div>
+                <div class="flex items-center gap-4 mt-auto pt-4 border-t border-luna-silver-light">
+                    <button id="modal-add-btn" class="flex-1 bg-luna-pink-dark text-white py-3 rounded-lg hover:bg-luna-black transition-colors font-medium flex items-center justify-center gap-2">
+                        <i data-lucide="shopping-bag" class="w-4 h-4"></i> Adicionar
+                    </button>
+                    <button id="modal-fav-btn" class="w-12 h-12 border border-luna-silver rounded-lg flex items-center justify-center hover:border-luna-pink-dark hover:text-luna-pink-dark transition-colors">
+                        <i data-lucide="heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Checkout Demonstrativo -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black/60 z-[90] hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-white p-6 md:p-8 rounded-xl shadow-2xl w-full max-w-md text-center">
+            <div class="w-16 h-16 bg-luna-pink-light text-luna-pink-dark rounded-full flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="check-circle" class="w-8 h-8"></i>
+            </div>
+            <h2 class="font-playfair text-2xl font-bold mb-2 text-luna-black">Pedido Demonstrativo</h2>
+            <p class="text-sm text-luna-gray mb-6">Como este é um projeto front-end demonstrativo, o checkout não processa pagamentos reais nem exige integração com backend.</p>
+            <p class="text-sm font-bold text-luna-black mb-6 border border-luna-silver-light p-3 rounded-lg">Valor simulado: <span id="checkout-total-val" class="text-luna-pink-dark"></span></p>
+            <button onclick="closeCheckout()" class="w-full bg-luna-black text-white py-3 rounded-lg hover:bg-luna-pink-dark transition-colors font-medium">Entendi, voltar à loja</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-luna-black text-white px-4 py-3 rounded shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-[100] flex items-center gap-3">
+        <i data-lucide="info" class="w-5 h-5 text-luna-pink"></i>
+        <span id="toast-msg" class="text-sm font-medium">Mensagem</span>
+    </div>
+
+    <!-- Script JS -->
+    <script src="script.js"></script>
+</body>
+</html>
