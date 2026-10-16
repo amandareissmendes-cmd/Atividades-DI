@@ -1,1 +1,66 @@
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
 
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D98CA8; /* luna-pink */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #B85C7A; /* luna-pink-dark */
+}
+
+/* Animations that are easier defined in CSS */
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fix mobile menu link area */
+.mobile-link {
+    display: block;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+/* Accordion Transition Support */
+.faq-content {
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    display: block;
+}
+
+.faq-content.open {
+    max-height: 200px;
+    opacity: 1;
+}
+
+.faq-item button[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+/* Truncate line clamp for description */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
