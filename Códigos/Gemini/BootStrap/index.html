@@ -1,1 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Prata & Joias | O brilho que revela a sua essência</title>
+    <meta name="description" content="Joias delicadas em prata e acessórios femininos para eternizar momentos e destacar sua beleza.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-moon-stars text-pink-main fs-3"></i>
+                <span class="brand-text">Luna <small class="d-block text-muted" style="font-size:0.4em; letter-spacing: 2px;">PRATA & JOIAS</small></span>
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-medium">
+                    <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#colecoes">Coleções</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#produtos" onclick="setCategoryFilter('Anéis')">Anéis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#produtos" onclick="setCategoryFilter('Colares')">Colares</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#produtos" onclick="setCategoryFilter('Brincos')">Brincos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#produtos" onclick="setCategoryFilter('Pulseiras')">Pulseiras</a></li>
+                    <li class="nav-item"><a class="nav-link text-pink-dark" href="#produtos" onclick="setPromoFilter()">Ofertas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3 nav-icons">
+                    <a href="#filtros" class="text-dark" aria-label="Pesquisar"><i class="bi bi-search fs-5"></i></a>
+                    <a href="#" class="text-dark" aria-label="Conta do Usuário" onclick="alert('Função de login demonstrativa.')"><i class="bi bi-person fs-5"></i></a>
+                    <a href="#" class="text-dark position-relative" data-bs-toggle="modal" data-bs-target="#favModal" aria-label="Favoritos">
+                        <i class="bi bi-heart fs-5"></i>
+                        <span id="favCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-pink-main">0</span>
+                    </a>
+                    <a href="#" class="text-dark position-relative" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-label="Sacola de Compras">
+                        <i class="bi bi-bag fs-5"></i>
+                        <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-pink-main">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Hero Banner -->
+    <section class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0 fade-in">
+                    <h1 class="display-4 fw-bold text-dark mb-3">O brilho que revela a sua essência</h1>
+                    <p class="lead text-muted mb-4">Joias delicadas para eternizar momentos e destacar a sua beleza em cada detalhe.</p>
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                        <a href="#colecoes" class="btn btn-primary-luna px-4 py-2">Conheça a coleção</a>
+                        <a href="#produtos" class="btn btn-outline-luna px-4 py-2">Ver mais vendidos</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <img src="https://images.unsplash.com/photo-1599643478524-fb524fa0a8a7?auto=format&fit=crop&w=800&q=80" alt="Colar de prata com pingente brilhante" class="img-fluid rounded shadow-sm hero-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Barra de Benefícios -->
+    <section class="bg-pink-light py-4">
+        <div class="container">
+            <div class="row g-3 text-center">
+                <div class="col-6 col-lg-3">
+                    <i class="bi bi-truck fs-2 text-pink-dark mb-2 d-block"></i>
+                    <h6 class="fw-bold mb-1">Envio para todo o Brasil</h6>
+                    <small class="text-muted">Frete grátis acima de R$ 299</small>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <i class="bi bi-gift fs-2 text-pink-dark mb-2 d-block"></i>
+                    <h6 class="fw-bold mb-1">Embalagem Especial</h6>
+                    <small class="text-muted">Pronta para presentear</small>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <i class="bi bi-shield-check fs-2 text-pink-dark mb-2 d-block"></i>
+                    <h6 class="fw-bold mb-1">Compra Segura</h6>
+                    <small class="text-muted">Dados criptografados</small>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <i class="bi bi-chat-heart fs-2 text-pink-dark mb-2 d-block"></i>
+                    <h6 class="fw-bold mb-1">Atendimento VIP</h6>
+                    <small class="text-muted">Suporte personalizado</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorias -->
+    <section id="colecoes" class="py-5 container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Encontre sua joia perfeita</h2>
+            <div class="divider mx-auto"></div>
+        </div>
+        <div class="row g-4 text-center">
+            <div class="col-6 col-lg-3">
+                <div class="category-card rounded overflow-hidden position-relative shadow-sm" onclick="setCategoryFilter('Anéis')">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f661259cb?auto=format&fit=crop&w=400&q=80" alt="Anéis" class="img-fluid w-100 h-100 object-fit-cover">
+                    <div class="category-overlay d-flex flex-column justify-content-center align-items-center">
+                        <h4 class="text-white">Anéis</h4>
+                        <span class="btn btn-sm btn-light mt-2">Explorar</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="category-card rounded overflow-hidden position-relative shadow-sm" onclick="setCategoryFilter('Colares')">
+                    <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=400&q=80" alt="Colares" class="img-fluid w-100 h-100 object-fit-cover">
+                    <div class="category-overlay d-flex flex-column justify-content-center align-items-center">
+                        <h4 class="text-white">Colares</h4>
+                        <span class="btn btn-sm btn-light mt-2">Explorar</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="category-card rounded overflow-hidden position-relative shadow-sm" onclick="setCategoryFilter('Brincos')">
+                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=400&q=80" alt="Brincos" class="img-fluid w-100 h-100 object-fit-cover">
+                    <div class="category-overlay d-flex flex-column justify-content-center align-items-center">
+                        <h4 class="text-white">Brincos</h4>
+                        <span class="btn btn-sm btn-light mt-2">Explorar</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="category-card rounded overflow-hidden position-relative shadow-sm" onclick="setCategoryFilter('Pulseiras')">
+                    <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=400&q=80" alt="Pulseiras" class="img-fluid w-100 h-100 object-fit-cover">
+                    <div class="category-overlay d-flex flex-column justify-content-center align-items-center">
+                        <h4 class="text-white">Pulseiras</h4>
+                        <span class="btn btn-sm btn-light mt-2">Explorar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtros e Busca -->
+    <section id="filtros" class="bg-silver-light py-4 mb-5">
+        <div class="container">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-3">
+                    <label class="form-label small text-muted">Pesquisar</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+                        <input type="text" id="searchInput" class="form-control border-start-0 ps-0" placeholder="Nome da joia...">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label small text-muted">Categoria</label>
+                    <select id="catFilter" class="form-select">
+                        <option value="Todos">Todas</option>
+                        <option value="Anéis">Anéis</option>
+                        <option value="Colares">Colares</option>
+                        <option value="Brincos">Brincos</option>
+                        <option value="Pulseiras">Pulseiras</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label small text-muted">Preço</label>
+                    <select id="priceFilter" class="form-select">
+                        <option value="all">Qualquer valor</option>
+                        <option value="low">Até R$ 100</option>
+                        <option value="mid">R$ 100 a R$ 150</option>
+                        <option value="high">Acima de R$ 150</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label small text-muted">Ordenar por</label>
+                    <select id="sortSelect" class="form-select">
+                        <option value="default">Relevância</option>
+                        <option value="priceAsc">Menor Preço</option>
+                        <option value="priceDesc">Maior Preço</option>
+                        <option value="nameAsc">Ordem Alfabética</option>
+                    </select>
+                </div>
+                <div class="col-md-3 d-flex gap-2">
+                    <button class="btn btn-outline-secondary w-100" onclick="clearFilters()">Limpar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos em Destaque -->
+    <section id="produtos" class="container mb-5">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Os queridinhos da Luna</h2>
+            <div class="divider mx-auto"></div>
+        </div>
+        <div id="noResultsMsg" class="alert alert-light text-center d-none" role="alert">
+            <i class="bi bi-emoji-frown fs-4 d-block mb-2 text-muted"></i>
+            Nenhuma joia encontrada com os filtros atuais.
+        </div>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4" id="productList">
+            <!-- Renderizado via JS -->
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="py-5 bg-pink-main text-white my-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                    <h2 class="display-6 fw-bold font-serif mb-3">Um presente que conta histórias</h2>
+                    <p class="lead mb-4">Surpreenda alguém especial com uma joia feita para durar na memória.</p>
+                    <button class="btn btn-light text-pink-dark px-4 py-2 fw-bold shadow-sm" onclick="alert('Redirecionando para guia de presentes (Demonstrativo)')">Descobrir presentes</button>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://images.unsplash.com/photo-1549439602-43ebca2327af?auto=format&fit=crop&w=800&q=80" alt="Caixa de presente com laço" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Novidades -->
+    <section id="novidades" class="container mb-5 pb-4">
+        <div class="d-flex justify-content-between align-items-end mb-4">
+            <div>
+                <h2 class="section-title mb-0">Novidades que encantam</h2>
+                <div class="divider mt-2"></div>
+            </div>
+            <button class="btn btn-outline-luna d-none d-md-block" onclick="setCategoryFilter('Todos'); document.getElementById('searchInput').focus();">Ver todas as novidades</button>
+        </div>
+        <div class="row row-cols-2 row-cols-md-4 g-4" id="newArrivalsList">
+            <!-- Renderizado via JS -->
+        </div>
+        <div class="text-center mt-4 d-md-none">
+            <button class="btn btn-outline-luna w-100" onclick="setCategoryFilter('Todos'); document.getElementById('searchInput').focus();">Ver todas as novidades</button>
+        </div>
+    </section>
+
+    <!-- Sobre Nós -->
+    <section id="sobre" class="bg-silver-light py-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0 pe-lg-5">
+                    <h2 class="section-title text-start">Mais do que joias, histórias para guardar</h2>
+                    <div class="divider mb-4"></div>
+                    <p class="text-muted">A Luna Prata & Joias nasceu do desejo de celebrar a delicadeza e a força feminina. Nossas peças são selecionadas para oferecer elegância e sofisticação ao seu dia a dia.</p>
+                    <ul class="list-unstyled mt-4 text-muted">
+                        <li class="mb-2"><i class="bi bi-check2 text-pink-main me-2"></i> Elegância nos detalhes</li>
+                        <li class="mb-2"><i class="bi bi-check2 text-pink-main me-2"></i> Qualidade e cuidado em cada peça</li>
+                        <li class="mb-2"><i class="bi bi-check2 text-pink-main me-2"></i> Atendimento humanizado e próximo</li>
+                        <li><i class="bi bi-check2 text-pink-main me-2"></i> Presentes com significado real</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=800&q=80" alt="Detalhe de joias sobre superfície elegante" class="img-fluid rounded shadow-sm">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="container py-5 my-4">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Quem escolhe a Luna</h2>
+            <div class="divider mx-auto"></div>
+            <small class="text-muted">(Depoimentos demonstrativos)</small>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-4 bg-white">
+                    <div class="text-pink-main mb-3">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="card-text fst-italic text-muted">"O anel solitário é perfeito! Muito mais brilhante pessoalmente. A embalagem veio com um cheirinho maravilhoso, amei a experiência!"</p>
+                    <div class="mt-auto d-flex align-items-center gap-3">
+                        <div class="bg-pink-light rounded-circle d-flex align-items-center justify-content-center text-pink-dark fw-bold" style="width:40px; height:40px">MC</div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Mariana Costa</h6>
+                            <small class="text-muted">Comprou: Anel Solitário Prata</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-4 bg-white">
+                    <div class="text-pink-main mb-3">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="card-text fst-italic text-muted">"Atendimento impecável. Comprei um colar de presente para minha esposa e eles me ajudaram a escolher. Ela ficou encantada."</p>
+                    <div class="mt-auto d-flex align-items-center gap-3">
+                        <div class="bg-pink-light rounded-circle d-flex align-items-center justify-content-center text-pink-dark fw-bold" style="width:40px; height:40px">RS</div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Rafael Silva</h6>
+                            <small class="text-muted">Comprou: Colar Coração Rosé</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-4 bg-white">
+                    <div class="text-pink-main mb-3">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                    </div>
+                    <p class="card-text fst-italic text-muted">"Peças lindas e delicadas, uso todos os dias e continuam perfeitas. Entrega super rápida para São Paulo."</p>
+                    <div class="mt-auto d-flex align-items-center gap-3">
+                        <div class="bg-pink-light rounded-circle d-flex align-items-center justify-content-center text-pink-dark fw-bold" style="width:40px; height:40px">AL</div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Amanda Lima</h6>
+                            <small class="text-muted">Comprou: Brinco Argola Minimalista</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ e Newsletter -->
+    <section class="container mb-5">
+        <div class="row g-5">
+            <!-- FAQ -->
+            <div class="col-lg-6" id="faq">
+                <h3 class="font-serif fw-bold mb-4">Dúvidas Frequentes</h3>
+                <div class="accordion accordion-flush" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Como escolher o tamanho do meu anel?</button></h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">Recomendamos medir a circunferência do dedo com um barbante ou utilizar um anel que você já possua e medir o diâmetro interno. (Resposta demonstrativa)</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Quais materiais são utilizados?</button></h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">Trabalhamos com Prata 925 e banho de ródio ou ouro rosé em peças específicas para garantir durabilidade e brilho.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Como cuidar das minhas peças?</button></h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">Evite contato com produtos químicos, perfumes e água do mar. Guarde-as em locais secos, preferencialmente nas embalagens originais.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Como funciona a política de troca?</button></h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">Você tem até 7 dias após o recebimento para solicitar a devolução e 30 dias para trocas por defeito de fabricação.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Newsletter -->
+            <div class="col-lg-6">
+                <div class="bg-pink-light rounded p-4 p-md-5 h-100">
+                    <h3 class="font-serif fw-bold mb-3">Receba um pouco de brilho na sua caixa de entrada</h3>
+                    <p class="text-muted mb-4">Inscreva-se para receber novidades, dicas de estilo e ofertas exclusivas.</p>
+                    <form id="newsForm" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Seu nome (opcional)">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="newsEmail" placeholder="Seu melhor e-mail" required>
+                            <div class="invalid-feedback">Por favor, insira um e-mail válido.</div>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="newsConsent" required>
+                            <label class="form-check-label small text-muted" for="newsConsent">Concordo em receber comunicações (modo demonstrativo).</label>
+                            <div class="invalid-feedback">Você precisa concordar para continuar.</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary-luna w-100">Quero receber novidades</button>
+                        <div id="newsAlert" class="alert alert-success mt-3 d-none small py-2" role="alert">Inscrição demonstrativa realizada com sucesso!</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="bg-silver-light py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Vamos conversar?</h2>
+                <div class="divider mx-auto"></div>
+            </div>
+            <div class="row g-5 justify-content-center">
+                <div class="col-lg-4 text-center text-lg-start">
+                    <div class="mb-4">
+                        <i class="bi bi-whatsapp fs-3 text-pink-main mb-2 d-block"></i>
+                        <h6 class="fw-bold mb-1">WhatsApp Comercial</h6>
+                        <p class="text-muted small">(11) 90000-0000<br>Seg a Sex: 9h às 18h</p>
+                    </div>
+                    <div class="mb-4">
+                        <i class="bi bi-envelope fs-3 text-pink-main mb-2 d-block"></i>
+                        <h6 class="fw-bold mb-1">E-mail de Atendimento</h6>
+                        <p class="text-muted small">contato@lunaprata.demo.br<br>Retorno em até 24h úteis</p>
+                    </div>
+                    <div>
+                        <i class="bi bi-instagram fs-3 text-pink-main mb-2 d-block"></i>
+                        <h6 class="fw-bold mb-1">Instagram</h6>
+                        <p class="text-muted small">@lunaprata_demo</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm p-4">
+                        <form id="contactForm" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="cName" class="form-label small fw-bold">Nome completo</label>
+                                <input type="text" class="form-control" id="cName" required>
+                                <div class="invalid-feedback">Preencha seu nome.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cEmail" class="form-label small fw-bold">E-mail</label>
+                                <input type="email" class="form-control" id="cEmail" required>
+                                <div class="invalid-feedback">E-mail inválido.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cAssunto" class="form-label small fw-bold">Assunto</label>
+                                <select class="form-select" id="cAssunto" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="Dúvida">Dúvida sobre produto</option>
+                                    <option value="Pedido">Meu pedido</option>
+                                    <option value="Troca">Troca ou devolução</option>
+                                    <option value="Outros">Outros</option>
+                                </select>
+                                <div class="invalid-feedback">Selecione um assunto.</div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="cMsg" class="form-label small fw-bold">Mensagem</label>
+                                <textarea class="form-control" id="cMsg" rows="4" required></textarea>
+                                <div class="invalid-feedback">Escreva sua mensagem.</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary-luna w-100">Enviar mensagem</button>
+                            <div id="contactAlert" class="alert alert-info mt-3 d-none small py-2" role="alert">Envio demonstrativo. Nenhuma mensagem real foi enviada.</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-luna pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-lg-3 col-md-6">
+                    <a class="navbar-brand d-flex align-items-center gap-2 mb-3 text-white" href="#">
+                        <i class="bi bi-moon-stars text-pink-main fs-4"></i>
+                        <span class="brand-text text-white">Luna <small class="d-block text-silver" style="font-size:0.4em; letter-spacing: 2px;">PRATA & JOIAS</small></span>
+                    </a>
+                    <p class="text-silver small">A beleza está nos detalhes. Joias delicadas para eternizar momentos e revelar sua essência.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="text-white fw-bold mb-3 font-serif">Navegação</h6>
+                    <ul class="list-unstyled footer-links small">
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#colecoes">Coleções</a></li>
+                        <li><a href="#novidades">Novidades</a></li>
+                        <li><a href="#produtos" onclick="setPromoFilter()">Ofertas</a></li>
+                        <li><a href="#sobre">Sobre nós</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="text-white fw-bold mb-3 font-serif">Atendimento</h6>
+                    <ul class="list-unstyled footer-links small">
+                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#faq">Perguntas Frequentes</a></li>
+                        <li><a href="#">Política de Entrega</a></li>
+                        <li><a href="#">Trocas e Devoluções</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="text-white fw-bold mb-3 font-serif">Redes Sociais</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-silver hover-pink fs-5"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-silver hover-pink fs-5"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" class="text-silver hover-pink fs-5"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary mb-3">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small text-silver">
+                <p class="mb-2 mb-md-0">&copy; <span id="currentYear"></span> Luna Prata & Joias. Projeto demonstrativo.</p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-silver text-decoration-none hover-pink">Política de Privacidade</a>
+                    <a href="#" class="text-silver text-decoration-none hover-pink">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAIS E OFFCANVAS -->
+
+    <!-- Sacola Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <div class="offcanvas-header bg-pink-light">
+            <h5 class="offcanvas-title font-serif fw-bold d-flex align-items-center gap-2" id="cartOffcanvasLabel"><i class="bi bi-bag"></i> Minha Sacola</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column p-0">
+            <div id="cartItemsContainer" class="flex-grow-1 overflow-auto p-3">
+                <!-- Itens injetados via JS -->
+            </div>
+            <div class="border-top p-3 bg-light">
+                <div class="input-group input-group-sm mb-3">
+                    <input type="text" class="form-control" id="cupomInput" placeholder="Cupom (ex: LUNA10)">
+                    <button class="btn btn-outline-secondary" onclick="applyCoupon()">Aplicar</button>
+                </div>
+                <div class="d-flex justify-content-between mb-1 small text-muted">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">R$ 0,00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2 small text-success d-none" id="cartDiscountRow">
+                    <span>Desconto</span>
+                    <span id="cartDiscount">- R$ 0,00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3 fw-bold fs-5">
+                    <span>Total</span>
+                    <span id="cartTotal" class="text-pink-dark">R$ 0,00</span>
+                </div>
+                <button class="btn btn-primary-luna w-100 mb-2 py-2" onclick="openCheckout()">Finalizar pedido</button>
+                <button class="btn btn-link text-muted w-100 text-decoration-none small" data-bs-dismiss="offcanvas">Continuar comprando</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Favoritos -->
+    <div class="modal fade" id="favModal" tabindex="-1" aria-labelledby="favModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header border-0 bg-pink-light">
+                    <h5 class="modal-title font-serif fw-bold d-flex align-items-center gap-2" id="favModalLabel"><i class="bi bi-heart-fill text-pink-main"></i> Meus Favoritos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body p-0" id="favItemsContainer">
+                    <!-- Itens via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detalhes do Produto -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 overflow-hidden">
+                <button type="button" class="btn-close position-absolute top-0 end-0 m-3 z-3 bg-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img id="modalImg" src="" alt="Produto" class="img-fluid w-100 h-100 object-fit-cover" style="min-height: 300px;">
+                    </div>
+                    <div class="col-md-6 d-flex flex-column">
+                        <div class="p-4 p-md-5 d-flex flex-column h-100">
+                            <span id="modalCategory" class="badge bg-pink-light text-pink-dark w-auto align-self-start mb-2">Categoria</span>
+                            <h3 id="modalName" class="font-serif fw-bold mb-2">Nome</h3>
+                            <div class="mb-3">
+                                <span id="modalOldPrice" class="text-muted text-decoration-line-through small me-2 d-none">R$ 0,00</span>
+                                <span id="modalPrice" class="fs-4 fw-bold text-pink-dark">R$ 0,00</span>
+                            </div>
+                            <p id="modalDesc" class="text-muted small mb-4 flex-grow-1">Descrição</p>
+                            
+                            <ul class="list-unstyled small text-muted mb-4 border-top border-bottom py-3">
+                                <li><strong>Material:</strong> Prata 925</li>
+                                <li><strong>Conservação:</strong> Evite água e químicos.</li>
+                            </ul>
+
+                            <div class="d-flex gap-2">
+                                <button id="modalFavBtn" class="btn btn-outline-danger px-3"><i class="bi bi-heart"></i></button>
+                                <button id="modalAddBtn" class="btn btn-primary-luna flex-grow-1"><i class="bi bi-bag-plus me-2"></i>Adicionar à sacola</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Checkout Demonstrativo -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-silver-light">
+                    <h5 class="modal-title font-serif fw-bold">Finalizar Pedido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="alert alert-warning small py-2 mb-4">
+                        <i class="bi bi-info-circle me-1"></i> Modo Demonstrativo: Não insira dados reais.
+                    </div>
+                    <form id="checkoutForm" class="needs-validation" novalidate>
+                        <h6 class="fw-bold mb-3">Dados de Entrega (Fictícios)</h6>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="CEP" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Endereço Completo" required>
+                        </div>
+                        <h6 class="fw-bold mb-3 mt-4">Resumo</h6>
+                        <div class="d-flex justify-content-between mb-2 fs-5">
+                            <span>Total a pagar:</span>
+                            <span id="checkoutTotal" class="fw-bold text-pink-dark">R$ 0,00</span>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mt-3 py-2">Simular Pagamento</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
