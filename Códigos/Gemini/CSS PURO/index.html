@@ -1,1 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luna Prata & Joias - O brilho que revela a sua essência. Joias delicadas, anéis, colares, brincos e pulseiras.">
+    <title>Luna Prata & Joias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Ícones via Phosphor Icons (Leves e elegantes) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
 
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="header-container">
+            <button class="mobile-menu-btn" aria-label="Abrir menu" id="menu-btn">
+                <i class="ph ph-list"></i>
+            </button>
+            
+            <a href="#" class="logo">
+                <i class="ph ph-gem"></i>
+                <span>Luna</span>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <button class="close-menu-btn" aria-label="Fechar menu" id="close-menu-btn">
+                    <i class="ph ph-x"></i>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#categorias">Coleções</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#ofertas">Ofertas</a></li>
+                    <li><a href="#sobre">Sobre nós</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-icons">
+                <button aria-label="Pesquisar" id="search-btn"><i class="ph ph-magnifying-glass"></i></button>
+                <button aria-label="Minha Conta"><i class="ph ph-user"></i></button>
+                <button aria-label="Favoritos" id="fav-btn">
+                    <i class="ph ph-heart"></i>
+                    <span class="badge" id="fav-count">0</span>
+                </button>
+                <button aria-label="Sacola de Compras" id="cart-btn">
+                    <i class="ph ph-tote"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1>O brilho que revela a sua essência</h1>
+                <p>Joias delicadas para eternizar momentos e destacar a sua beleza em cada detalhe.</p>
+                <div class="hero-buttons">
+                    <a href="#produtos" class="btn btn-primary">Conheça a coleção</a>
+                    <a href="#produtos" class="btn btn-secondary">Ver mais vendidos</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefícios -->
+        <section class="benefits">
+            <div class="benefit-item">
+                <i class="ph ph-truck"></i>
+                <div>
+                    <h3>Envio para todo o Brasil</h3>
+                    <p>Entrega rápida e segura</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="ph ph-gift"></i>
+                <div>
+                    <h3>Embalagem especial</h3>
+                    <p>Pronta para presentear</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="ph ph-shield-check"></i>
+                <div>
+                    <h3>Compra segura</h3>
+                    <p>Proteção de dados 100%</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="ph ph-chats"></i>
+                <div>
+                    <h3>Atendimento VIP</h3>
+                    <p>Suporte personalizado</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categorias -->
+        <section id="categorias" class="categories section-padding">
+            <h2 class="section-title">Encontre sua joia perfeita</h2>
+            <div class="categories-grid">
+                <a href="#produtos" class="category-card" data-filter="aneis">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b2548e?auto=format&fit=crop&w=400&q=80" alt="Anéis" loading="lazy">
+                    <div class="category-overlay">
+                        <h3>Anéis</h3>
+                        <span class="btn-link">Explorar</span>
+                    </div>
+                </a>
+                <a href="#produtos" class="category-card" data-filter="colares">
+                    <img src="https://images.unsplash.com/photo-1599643478514-4a4e0f695905?auto=format&fit=crop&w=400&q=80" alt="Colares" loading="lazy">
+                    <div class="category-overlay">
+                        <h3>Colares</h3>
+                        <span class="btn-link">Explorar</span>
+                    </div>
+                </a>
+                <a href="#produtos" class="category-card" data-filter="brincos">
+                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=400&q=80" alt="Brincos" loading="lazy">
+                    <div class="category-overlay">
+                        <h3>Brincos</h3>
+                        <span class="btn-link">Explorar</span>
+                    </div>
+                </a>
+                <a href="#produtos" class="category-card" data-filter="pulseiras">
+                    <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=400&q=80" alt="Pulseiras" loading="lazy">
+                    <div class="category-overlay">
+                        <h3>Pulseiras</h3>
+                        <span class="btn-link">Explorar</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Produtos em Destaque -->
+        <section id="produtos" class="products-section section-padding">
+            <h2 class="section-title">Os queridinhos da Luna</h2>
+            
+            <div class="filters-bar">
+                <input type="text" id="search-input" placeholder="Buscar joias...">
+                <select id="sort-select">
+                    <option value="default">Ordenar por</option>
+                    <option value="price-asc">Menor Preço</option>
+                    <option value="price-desc">Maior Preço</option>
+                    <option value="name-asc">Nome (A-Z)</option>
+                </select>
+                <select id="category-select">
+                    <option value="all">Todas as Categorias</option>
+                    <option value="anel">Anéis</option>
+                    <option value="colar">Colares</option>
+                    <option value="brinco">Brincos</option>
+                    <option value="pulseira">Pulseiras</option>
+                </select>
+                <button id="clear-filters" class="btn btn-outline">Limpar Filtros</button>
+            </div>
+
+            <div id="no-results" class="hidden text-center" style="padding: 2rem;">
+                <p>Nenhuma joia encontrada com estes filtros.</p>
+            </div>
+
+            <div class="products-grid" id="products-container">
+                <!-- Produtos renderizados via JS -->
+            </div>
+        </section>
+
+        <!-- Banner Promocional -->
+        <section id="ofertas" class="promo-banner">
+            <div class="promo-content">
+                <h2>Um presente que conta histórias</h2>
+                <p>Surpreenda alguém especial com uma joia feita para durar na memória.</p>
+                <a href="#produtos" class="btn btn-primary">Descobrir presentes</a>
+            </div>
+        </section>
+
+        <!-- Lançamentos -->
+        <section class="products-section section-padding bg-light-pink">
+            <h2 class="section-title">Novidades que encantam</h2>
+            <div class="products-grid" id="new-arrivals-container">
+                <!-- Renderizados via JS -->
+            </div>
+            <div class="text-center" style="margin-top: 2rem;">
+                <a href="#produtos" class="btn btn-secondary">Ver todas as novidades</a>
+            </div>
+        </section>
+
+        <!-- Sobre Nós -->
+        <section id="sobre" class="about section-padding">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left;">Mais do que joias, histórias para guardar</h2>
+                    <p>A Luna nasceu do desejo de criar joias delicadas, elegantes e versáteis, pensadas para acompanhar você em todos os momentos da vida.</p>
+                    <ul class="about-values">
+                        <li><i class="ph-fill ph-star"></i> Elegância nos detalhes</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Qualidade e cuidado</li>
+                        <li><i class="ph-fill ph-heart"></i> Presentes com significado</li>
+                        <li><i class="ph-fill ph-users"></i> Atendimento humanizado</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=600&q=80" alt="Detalhe de joias Luna" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos -->
+        <section class="testimonials section-padding bg-light-pink">
+            <h2 class="section-title">Quem escolhe a Luna</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"As joias são ainda mais lindas pessoalmente. O capricho na embalagem me emocionou!"</p>
+                    <strong>Mariana Costa</strong>
+                    <span class="text-muted">Comprou: Colar Ponto de Luz</span>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Atendimento impecável e entrega super rápida. O anel solitário é perfeito."</p>
+                    <strong>Camila Rodrigues</strong>
+                    <span class="text-muted">Comprou: Anel Solitário Prata</span>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Comprei para presentear minha mãe e ela amou. Delicadeza define a marca."</p>
+                    <strong>Juliana Alves</strong>
+                    <span class="text-muted">Comprou: Pulseira Elo Delicado</span>
+                </div>
+            </div>
+            <p class="text-center text-muted" style="margin-top: 1rem; font-size: 0.8rem;">* Depoimentos demonstrativos.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq section-padding">
+            <h2 class="section-title">Dúvidas Frequentes</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Como escolher o tamanho do meu anel? <i class="ph ph-caret-down"></i></button>
+                    <div class="accordion-content"><p>Recomendamos medir a circunferência do seu dedo com um barbante ou fita métrica e comparar com nossa tabela de medidas disponível na página do produto. (Dado demonstrativo).</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Quais materiais são utilizados nas joias? <i class="ph ph-caret-down"></i></button>
+                    <div class="accordion-content"><p>Trabalhamos com Prata 925 e banho de ouro rosé, garantindo durabilidade e brilho intenso. Nossas peças são hipoalergênicas. (Dado demonstrativo).</p></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Como funciona a política de troca? <i class="ph ph-caret-down"></i></button>
+                    <div class="accordion-content"><p>Você tem até 30 dias após o recebimento para solicitar a troca de forma gratuita. (Dado demonstrativo).</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter & Contato -->
+        <section id="contato" class="contact-newsletter section-padding">
+            <div class="contact-grid">
+                <div class="newsletter-box">
+                    <h3>Receba um pouco de brilho na sua caixa de entrada</h3>
+                    <p>Cadastre-se para conhecer novidades, coleções e inspirações da Luna.</p>
+                    <form id="newsletter-form" class="form">
+                        <input type="text" placeholder="Seu nome (opcional)">
+                        <input type="email" id="news-email" placeholder="Seu melhor e-mail" required>
+                        <label class="checkbox-label">
+                            <input type="checkbox" required>
+                            Aceito receber comunicações.
+                        </label>
+                        <button type="submit" class="btn btn-primary w-100">Quero receber novidades</button>
+                        <p id="news-msg" class="msg-feedback hidden"></p>
+                    </form>
+                </div>
+                
+                <div class="contact-form-box">
+                    <h3>Vamos conversar?</h3>
+                    <form id="contact-form" class="form">
+                        <input type="text" placeholder="Nome completo" required>
+                        <input type="email" placeholder="E-mail" required>
+                        <input type="text" placeholder="Assunto" required>
+                        <textarea placeholder="Sua mensagem" rows="4" required></textarea>
+                        <button type="submit" class="btn btn-secondary w-100">Enviar mensagem</button>
+                        <p id="contact-msg" class="msg-feedback hidden"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="logo">
+                    <i class="ph ph-gem"></i>
+                    <span>Luna</span>
+                </a>
+                <p>Elegância e delicadeza em forma de joias. Criando memórias brilhantes para o seu dia a dia.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#categorias">Coleções</a></li>
+                    <li><a href="#ofertas">Ofertas</a></li>
+                    <li><a href="#sobre">Sobre nós</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Atendimento</h4>
+                <ul>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#">Perguntas frequentes</a></li>
+                    <li><a href="#">Entrega</a></li>
+                    <li><a href="#">Trocas e devoluções</a></li>
+                </ul>
+                <p class="mt-1"><i class="ph ph-whatsapp"></i> (00) 0000-0000</p>
+                <p><i class="ph ph-envelope"></i> ola@lunajoias.demo</p>
+            </div>
+            <div class="footer-col">
+                <h4>Redes Sociais</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="ph ph-pinterest-logo"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> Luna Prata & Joias. Projeto demonstrativo.</p>
+            <div class="footer-legal">
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carrinho Lateral -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Sua Sacola</h3>
+            <button id="close-cart" aria-label="Fechar sacola"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Itens via JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <strong id="cart-total-price">R$ 0,00</strong>
+            </div>
+            <button class="btn btn-primary w-100" onclick="alert('Checkout demonstrativo. Obrigado por testar!')">Finalizar Pedido</button>
+            <button class="btn btn-outline w-100 mt-1" id="continue-shopping">Continuar Comprando</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Modal de Produto -->
+    <div class="modal" id="product-modal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Fechar"><i class="ph ph-x"></i></button>
+            <div class="modal-grid" id="modal-body">
+                <!-- Conteúdo via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
